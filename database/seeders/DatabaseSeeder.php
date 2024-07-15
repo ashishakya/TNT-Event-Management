@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(
             [
-                        EventSeeder::class,
-                    ]
+                EventSeeder::class,
+            ]
         );
     }
 }
