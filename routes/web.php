@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', function () {
-    return \App\Models\User::all();
+    return App\Models\User::all();
 });

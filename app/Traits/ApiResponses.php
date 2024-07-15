@@ -13,13 +13,14 @@ trait ApiResponses
      *
      * @return JsonResponse
      */
-    protected function sendSuccessResponse(array $data, string $successMessage = 'Success', int $statusCode = 200): \Illuminate\Http\JsonResponse
+    protected function sendSuccessResponse(array $data, string $successMessage = 'Success', int $statusCode = 200): JsonResponse
     {
         $responseData = [
-            "data" => $data,
+            "data"    => $data,
             "message" => $successMessage,
-            "status" => true,
+            "status"  => true,
         ];
+
         return response()->json($responseData, $statusCode);
     }
 
