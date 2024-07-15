@@ -33,4 +33,10 @@ class AuthController extends Controller
 
         return $this->sendSuccessResponse($data);
     }
+
+    public function me(Request  $request)
+    {
+        $authenticatedUser = auth()->user();
+        return $this->sendSuccessResponse($authenticatedUser->only(["id", "name", "email"]));
+    }
 }
