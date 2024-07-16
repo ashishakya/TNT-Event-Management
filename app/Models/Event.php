@@ -10,4 +10,8 @@ class Event extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $casts = [
+        "date" => "date",
+    ];
 }
