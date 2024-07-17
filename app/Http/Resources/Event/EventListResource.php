@@ -20,6 +20,7 @@ class EventListResource extends JsonResource
             "description" => $this->description,
             "date"        => formatCarbonDate($this->date),
             "destination" => $this->destination,
+            "status"      => $this->status,
         ];
     }
 }

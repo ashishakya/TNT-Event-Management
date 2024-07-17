@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Event;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\Event\EventFilter;
 use App\Http\Requests\Event\EventCreateRequest;
 use App\Http\Requests\Event\EventUpdateRequest;
 use App\Http\Resources\Event\EventListResource;
@@ -16,11 +17,13 @@ class EventController extends Controller
     use ApiResponses;
 
     /**
+     * @param EventFilter $filters
+     *
      * @return AnonymousResourceCollection
      */
-    public function index(): AnonymousResourceCollection
+    public function index(EventFilter $filters): AnonymousResourceCollection
     {
-        return EventListResource::collection(Event::paginate());
+        return EventListResource::collection(Event::filter($filters)->paginate());
     }
 
     /**

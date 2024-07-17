@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Event;
 
 use App\Constants\DbTables;
+use App\Models\Event;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -32,6 +33,8 @@ class EventUpdateRequest extends FormRequest
             "date"        => ["required", "date:format:Y-m-d"],
             "destination" => ["required"],
             "description" => ["required"],
+            "status"      => ["required", Rule::in(Event::VALID_STATUS)],
+
         ];
     }
 

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class EventFactory extends Factory
             "date"        => $this->faker->date(),
             "destination" => $this->faker->address(),
             "description" => $this->faker->text(),
+            "status"      => $this->faker->randomElement(Event::VALID_STATUS),
         ];
     }
 }
