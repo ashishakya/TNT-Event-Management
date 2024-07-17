@@ -21,4 +21,11 @@ class EventController extends Controller
     {
         return new EventListResource($event);
     }
+
+    public function destroy(Event $event)
+    {
+        $event->delete();
+
+        return $this->sendSuccessResponse([], "Event successfully deleted.");
+    }
 }
