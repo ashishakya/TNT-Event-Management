@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Event;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Event\EventCreateRequest;
+use App\Http\Requests\Event\EventUpdateRequest;
 use App\Http\Resources\Event\EventListResource;
 use App\Models\Event;
 use App\Traits\ApiResponses;
@@ -37,7 +38,7 @@ class EventController extends Controller
      *
      * @return JsonResponse
      */
-    public function destroy(Event $event)
+    public function destroy(Event $event): JsonResponse
     {
         $event->delete();
 
@@ -47,5 +48,12 @@ class EventController extends Controller
     public function store(EventCreateRequest $request): EventListResource
     {
         return new EventListResource(Event::create($request->validated()));
+    }
+
+    public function update(EventUpdateRequest $request, Event $event): EventListResource
+    {
+        $event->update($request->validated());
+
+        return new EventListResource($event);
     }
 }
