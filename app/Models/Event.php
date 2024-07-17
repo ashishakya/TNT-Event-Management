@@ -11,6 +11,12 @@ class Event extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        "name",
+        "description",
+        "date",
+        "destination",
+    ];
     protected $casts = [
         "date" => "date",
     ];
